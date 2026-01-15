@@ -51,3 +51,37 @@ h1 {
   width: fit-content;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
+/* ===== COLORES POR TIPO DE MATERIA ===== */
+
+.materia.matematica {
+  background-color: #f8bbd0; /* rosa */
+}
+
+.materia.juridica {
+  background-color: #d1c4e9; /* lila */
+}
+
+.materia.contable {
+  background-color: #ffe0b2; /* naranja suave */
+}
+
+.materia.economica {
+  background-color: #b3e5fc; /* celeste */
+}
+
+.materia.otra {
+  background-color: #fff9c4; /* amarillo */
+}
+
+/* ===== ESTADOS ===== */
+
+.materia.bloqueada {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.materia.aprobada {
+  background-color: #4caf50 !important;
+  color: white;
+}
