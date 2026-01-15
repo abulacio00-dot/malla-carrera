@@ -7,13 +7,15 @@ body {
 .malla {
   display: flex;
   gap: 20px;
+  align-items: flex-start;
 }
 
 .anio {
   background: white;
   padding: 15px;
-  border-radius: 8px;
-  width: 200px;
+ border-radius: 10px;
+  width: 260px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .materia {
