@@ -31,16 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
       actualizarBloqueos();
       actualizarProgreso();
 
-      let timer;
-
-materia.addEventListener("touchstart", () => {
-  timer = setTimeout(() => {
-    cambiarEstadoFinal(materia);
-  }, 600); // 0.6 segundos
-});
-
-materia.addEventListener("touchend", () => {
-  clearTimeout(timer); // si levantás antes de 0.6s, no hace nada
     });
 
     materia.addEventListener("dblclick", () => {
@@ -156,11 +146,4 @@ function actualizarProgreso() {
     document.getElementById("promedio").textContent = promedio;
   }
 
-}
-
-function cambiarEstadoFinal(materia) {
-  materia.classList.remove("regular");
-  materia.classList.add("final");
-  guardarProgreso();       // actualiza almacenamiento si lo usás
-  actualizarProgreso();    // actualiza el dashboard
 }
