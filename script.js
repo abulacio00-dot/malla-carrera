@@ -87,13 +87,17 @@ function guardarProgreso() {
 
   localStorage.setItem("materias", JSON.stringify(datos));
 }
+
 function actualizarProgreso() {
   const total = document.querySelectorAll(".materia").length;
 
   const regulares = document.querySelectorAll(".materia.aprobada").length;
   const finales = document.querySelectorAll(".materia.final").length;
 
-  // contador principal (finales)
+  // 👉 regulares reales = verdes + azules
+  const regularesTotales = regulares + finales;
+
+  // finales rendidos
   document.getElementById("contador").textContent =
     `${finales} / ${total}`;
 
@@ -101,9 +105,10 @@ function actualizarProgreso() {
   document.getElementById("porcentaje").textContent =
     `${porcentajeFinales}%`;
 
-  // porcentaje de regulares
-  const porcentajeRegulares = Math.round((regulares / total) * 100);
+  // porcentaje de regulares (incluye finales)
+  const porcentajeRegulares = Math.round(
+    (regularesTotales / total) * 100
+  );
   document.getElementById("porcentaje-regulares").textContent =
     `${porcentajeRegulares}%`;
 }
-
