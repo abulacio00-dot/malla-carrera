@@ -72,14 +72,23 @@ function guardarProgreso() {
 
   localStorage.setItem("aprobadas", JSON.stringify(ids));
 }
-
 function actualizarProgreso() {
   const total = document.querySelectorAll(".materia").length;
-  const aprobadas = document.querySelectorAll(".materia.aprobada").length;
 
+  const regulares = document.querySelectorAll(".materia.aprobada").length;
+  const finales = document.querySelectorAll(".materia.final").length;
+
+  // contador principal (finales)
   document.getElementById("contador").textContent =
-    `${aprobadas} / ${total}`;
+    `${finales} / ${total}`;
 
-  const porcentaje = Math.round((aprobadas / total) * 100);
-  document.getElementById("porcentaje").textContent = `${porcentaje}%`;
+  const porcentajeFinales = Math.round((finales / total) * 100);
+  document.getElementById("porcentaje").textContent =
+    `${porcentajeFinales}%`;
+
+  // porcentaje de regulares
+  const porcentajeRegulares = Math.round((regulares / total) * 100);
+  document.getElementById("porcentaje-regulares").textContent =
+    `${porcentajeRegulares}%`;
 }
+
