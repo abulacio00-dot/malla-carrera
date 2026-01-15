@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
    materia.addEventListener("click", () => {
   if (materia.classList.contains("bloqueada")) return;
 
-  materia.classList.toggle("aprobada");
+     materia.classList.toggle("aprobada");
   guardarProgreso();
   actualizarBloqueos();
   actualizarProgreso();
