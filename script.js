@@ -14,15 +14,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // click SIEMPRE permitido, el bloqueo se evalúa después
-    materia.addEventListener("click", () => {
-      // si está bloqueada, no permitir aprobar
-      if (materia.classList.contains("bloqueada")) return;
+   materia.addEventListener("click", (e) => {
+  if (materia.classList.contains("bloqueada")) return;
 
-      materia.classList.toggle("aprobada");
-      guardarProgreso();
-      actualizarBloqueos();
-      actualizarProgreso();
-    });
+  if (e.shiftKey) {
+    materia.classList.toggle("final");
+    materia.classList.remove("aprobada");
+  } else {
+    materia.classList.toggle("aprobada");
+    materia.classList.remove("final");
+  }
+
+  guardarProgreso();
+  actualizarBloqueos();
+  actualizarProgreso();
+});
+
   });
 
   actualizarBloqueos();
