@@ -144,6 +144,25 @@ h1 {
   transition: width 0.3s ease;
 }
 
+.progreso-contenedor {
+  display: flex;          /* organiza las columnas lado a lado */
+  gap: 25px;              /* espacio entre columnas */
+  align-items: flex-start; /* alinea al inicio verticalmente */
+}
+
+.progreso-info,
+.progreso-barras {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 14px;
+  flex: 1; /* cada columna ocupa la mitad más o menos */
+}
+
+.progreso-barras p {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 .relleno.final {
   background-color: #1976d2; /* finales */
 }
