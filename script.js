@@ -94,21 +94,37 @@ function actualizarProgreso() {
   const regulares = document.querySelectorAll(".materia.aprobada").length;
   const finales = document.querySelectorAll(".materia.final").length;
 
-  // 👉 regulares reales = verdes + azules
+  // regulares reales = verdes + azules
   const regularesTotales = regulares + finales;
 
-  // finales rendidos
-  document.getElementById("contador").textContent =
-    `${finales} / ${total}`;
-
-  const porcentajeFinales = Math.round((finales / total) * 100);
-  document.getElementById("porcentaje").textContent =
-    `${porcentajeFinales}%`;
-
-  // porcentaje de regulares (incluye finales)
   const porcentajeRegulares = Math.round(
     (regularesTotales / total) * 100
   );
+
+  const porcentajeFinales = Math.round(
+    (finales / total) * 100
+  );
+
+  // textos
+  document.getElementById("contador").textContent =
+    `${finales} / ${total}`;
+
+  document.getElementById("porcentaje").textContent =
+    `${porcentajeFinales}%`;
+
   document.getElementById("porcentaje-regulares").textContent =
     `${porcentajeRegulares}%`;
+
+  // barras visuales
+  document.getElementById("barra-regulares").style.width =
+    `${porcentajeRegulares}%`;
+
+  document.getElementById("barra-finales").style.width =
+    `${porcentajeFinales}%`;
+
+  document.getElementById("texto-regulares").textContent =
+    `${porcentajeRegulares}%`;
+
+  document.getElementById("texto-finales").textContent =
+    `${porcentajeFinales}%`;
 }
