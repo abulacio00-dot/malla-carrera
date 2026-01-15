@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function actualizarBloqueos() {
   const materias = document.querySelectorAll(".materia");
   const idsAprobadas = Array.from(
-    document.querySelectorAll(".materia.aprobada")
+    document.querySelectorAll(".materia.aprobada, .materia.final")
   ).map(m => m.dataset.id);
 
   materias.forEach(materia => {
