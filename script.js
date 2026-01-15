@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const materias = document.querySelectorAll(".materia");
-
-  // Cargar progreso guardado
   const aprobadasGuardadas = JSON.parse(localStorage.getItem("aprobadas")) || [];
 
   materias.forEach(materia => {
@@ -12,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     materia.addEventListener("click", () => {
-      // No permitir click si está bloqueada
       if (materia.classList.contains("bloqueada")) return;
 
       materia.classList.toggle("aprobada");
@@ -26,6 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function actualizarBloqueos() {
   const materias = document.querySelectorAll(".materia");
+  const idsAprobadas = Array.from(
+    document.querySelectorAll(".materia.aprobada")
+  ).map(m => m.dataset.id);
 
   materias.forEach(materia => {
     const correlativas = materia.dataset.correlativas;
@@ -36,9 +36,6 @@ function actualizarBloqueos() {
     }
 
     const idsNecesarios = correlativas.split(",");
-    const aprobadas = document.querySelectorAll(".materia.aprobada");
-    const idsAprobadas = Array.from(aprobadas).map(m => m.dataset.id);
-
     const habilitada = idsNecesarios.every(id => idsAprobadas.includes(id));
 
     if (habilitada) {
@@ -51,19 +48,9 @@ function actualizarBloqueos() {
 }
 
 function guardarProgreso() {
-  const aprobadas = document.querySelectorAll(".materia.aprobada");
-  const ids = Array.from(aprobadas).map(m => m.dataset.id);
+  const ids = Array.from(
+    document.querySelectorAll(".materia.aprobada")
+  ).map(m => m.dataset.id);
+
   localStorage.setItem("aprobadas", JSON.stringify(ids));
-}
-
-.materia.bloqueada {
-  background-color: #bbb;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.materia.aprobada {
-  background-color: #4caf50;
-  color: white;
-  font-weight: bold;
 }
