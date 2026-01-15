@@ -157,3 +157,10 @@ function actualizarProgreso() {
   }
 
 }
+
+function cambiarEstadoFinal(materia) {
+  materia.classList.remove("regular");
+  materia.classList.add("final");
+  guardarProgreso();       // actualiza almacenamiento si lo usás
+  actualizarProgreso();    // actualiza el dashboard
+}
