@@ -166,3 +166,9 @@ h1 {
 .relleno.final {
   background-color: #1976d2; /* finales */
 }
+
+@media (max-width: 768px) {
+  .progreso-contenedor {
+    flex-direction: column; /* apila las columnas */
+  }
+}
