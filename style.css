@@ -144,3 +144,27 @@ h1 {
   transition: width 0.3s ease;
 }
 
+
+#dashboard {
+  display: flex;           /* pone los bloques en fila horizontal */
+  gap: 20px;               /* espacio entre los bloques */
+  align-items: flex-start; /* alinea al inicio vertical */
+}
+
+#progreso, #barras-progreso, #leyenda {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 10px;
+  flex: 1;  /* cada bloque ocupa espacio proporcional */
+}
+
+.barra-item {
+  margin-bottom: 10px; /* espacio entre barras */
+}
+
+/* Responsive: se apilan en móvil */
+@media (max-width: 768px) {
+  #dashboard {
+    flex-direction: column;
+  }
+}
