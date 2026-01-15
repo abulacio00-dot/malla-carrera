@@ -1,19 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   const materias = document.querySelectorAll(".materia");
-  const aprobadasGuardadas = JSON.parse(localStorage.getItem("aprobadas")) || [];
+
+  // Cargar progreso guardado
+  const aprobadasGuardadas =
+    JSON.parse(localStorage.getItem("aprobadas")) || [];
 
   materias.forEach(materia => {
     const id = materia.dataset.id;
 
+    // restaurar aprobadas
     if (aprobadasGuardadas.includes(id)) {
       materia.classList.add("aprobada");
     }
 
-   materia.addEventListener("click", () => {
-  if (materia.classList.contains("bloqueada")) return;
+    // click SIEMPRE permitido, el bloqueo se evalúa después
+    materia.addEventListener("click", () => {
+      // si está bloqueada, no permitir aprobar
+      if (materia.classList.contains("bloqueada")) return;
 
-     materia.classList.toggle("aprobada");
-  guardarProgreso();
+      materia.classList.toggle("aprobada");
+      guardarProgreso();
+      actualizarBloqueos();
+      actualizarProgreso();
+    });
+  });
+
   actualizarBloqueos();
   actualizarProgreso();
 });
@@ -27,13 +38,16 @@ function actualizarBloqueos() {
   materias.forEach(materia => {
     const correlativas = materia.dataset.correlativas;
 
+    // 👇 CLAVE: si no tiene correlativas, JAMÁS se bloquea
     if (!correlativas) {
       materia.classList.remove("bloqueada");
       return;
     }
 
     const idsNecesarios = correlativas.split(",");
-    const habilitada = idsNecesarios.every(id => idsAprobadas.includes(id));
+    const habilitada = idsNecesarios.every(id =>
+      idsAprobadas.includes(id)
+    );
 
     if (habilitada) {
       materia.classList.remove("bloqueada");
@@ -51,6 +65,7 @@ function guardarProgreso() {
 
   localStorage.setItem("aprobadas", JSON.stringify(ids));
 }
+
 function actualizarProgreso() {
   const total = document.querySelectorAll(".materia").length;
   const aprobadas = document.querySelectorAll(".materia.aprobada").length;
