@@ -43,3 +43,11 @@ h1 {
   color: white;
   font-weight: bold;
 }
+#progreso {
+  background: #ffffff;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
