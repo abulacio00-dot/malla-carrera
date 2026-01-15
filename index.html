@@ -9,12 +9,34 @@
 
 <h1>Malla Curricular</h1>
   <div id="progreso">
-  <p><strong>Materias aprobadas:</strong> <span id="contador">0</span></p>
-  <p><strong>Avance de la carrera:</strong> <span id="porcentaje">0%</span></p>
-  <p><strong>Materias regulares:</strong> <span id="porcentaje-regulares">0%</span></p>
-  <p><strong>Promedio:</strong> <span id="promedio">—</span></p>
- 
+
+  <div class="progreso-contenedor">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="progreso-info">
+      <p><strong>Materias aprobadas:</strong> <span id="contador"></span></p>
+      <p><strong>Avance de carrera:</strong> <span id="porcentaje"></span></p>
+      <p><strong>Materias regulares:</strong> <span id="porcentaje-regulares"></span></p>
+      <p><strong>Promedio:</strong> <span id="promedio">—</span></p>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="progreso-barras">
+      <p><strong>Regulares</strong></p>
+      <div class="barra">
+        <div id="barra-regulares"></div>
+      </div>
+
+      <p><strong>Finales rendidos</strong></p>
+      <div class="barra">
+        <div id="barra-finales"></div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
+
 
   <div id="barras-progreso">
 
