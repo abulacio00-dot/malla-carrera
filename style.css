@@ -118,3 +118,32 @@ h1 {
   background-color: #1976d2;
   color: white;
 }
+
+#barras-progreso {
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+.barra-item {
+  margin-bottom: 12px;
+}
+
+.barra {
+  width: 100%;
+  height: 18px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 5px 0;
+}
+
+.relleno {
+  height: 100%;
+  width: 0%;
+  background-color: #4caf50; /* regulares */
+  transition: width 0.3s ease;
+}
+
+.relleno.final {
+  background-color: #1976d2; /* finales */
+}
