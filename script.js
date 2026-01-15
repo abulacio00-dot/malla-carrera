@@ -54,3 +54,13 @@ function guardarProgreso() {
 
   localStorage.setItem("aprobadas", JSON.stringify(ids));
 }
+function actualizarProgreso() {
+  const total = document.querySelectorAll(".materia").length;
+  const aprobadas = document.querySelectorAll(".materia.aprobada").length;
+
+  document.getElementById("contador").textContent =
+    `${aprobadas} / ${total}`;
+
+  const porcentaje = Math.round((aprobadas / total) * 100);
+  document.getElementById("porcentaje").textContent = `${porcentaje}%`;
+}
