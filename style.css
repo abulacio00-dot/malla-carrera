@@ -80,6 +80,34 @@ h1 {
   opacity: 0.5;
   cursor: not-allowed;
 }
+#leyenda {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#leyenda div {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+/* reutilizamos colores */
+.color.matematica { background: #f8bbd0; }
+.color.juridica { background: #d1c4e9; }
+.color.contable { background: #ffe0b2; }
+.color.economica { background: #b3e5fc; }
+.color.otra { background: #c8e6c9; }
+.color.aprobada { background: #4caf50; }
+.color.final { background: #1976d2; }
 
 .materia.aprobada {
   background-color: #4caf50 !important;
