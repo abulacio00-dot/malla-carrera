@@ -39,6 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (nota !== null) {
         materia.dataset.nota = nota;
         guardarProgreso();
+        actualizarProgreso();
+
       }
     });
   });
