@@ -1,40 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
   const materias = document.querySelectorAll(".materia");
 
-  // Cargar progreso guardado
-  const aprobadasGuardadas =
-    JSON.parse(localStorage.getItem("aprobadas")) || [];
+  const datosGuardados =
+    JSON.parse(localStorage.getItem("materias")) || [];
+
+  datosGuardados.forEach(dato => {
+    const materia = document.querySelector(
+      `.materia[data-id="${dato.id}"]`
+    );
+    if (!materia) return;
+
+    if (dato.aprobada) materia.classList.add("aprobada");
+    if (dato.final) materia.classList.add("final");
+    if (dato.nota) materia.dataset.nota = dato.nota;
+  });
 
   materias.forEach(materia => {
-    const id = materia.dataset.id;
+    materia.addEventListener("click", (e) => {
+      if (materia.classList.contains("bloqueada")) return;
 
-    // restaurar aprobadas
-    if (aprobadasGuardadas.includes(id)) {
-      materia.classList.add("aprobada");
-    }
+      if (e.shiftKey) {
+        materia.classList.toggle("final");
+        materia.classList.remove("aprobada");
+      } else {
+        materia.classList.toggle("aprobada");
+        materia.classList.remove("final");
+      }
 
-    // click SIEMPRE permitido, el bloqueo se evalúa después
-   materia.addEventListener("click", (e) => {
-  if (materia.classList.contains("bloqueada")) return;
+      guardarProgreso();
+      actualizarBloqueos();
+      actualizarProgreso();
+    });
 
-  if (e.shiftKey) {
-    materia.classList.toggle("final");
-    materia.classList.remove("aprobada");
-  } else {
-    materia.classList.toggle("aprobada");
-    materia.classList.remove("final");
-  }
+    materia.addEventListener("dblclick", () => {
+      const notaActual = materia.dataset.nota || "";
+      const nota = prompt("Ingresar nota final:", notaActual);
 
-  guardarProgreso();
-  actualizarBloqueos();
-  actualizarProgreso();
-});
-
+      if (nota !== null) {
+        materia.dataset.nota = nota;
+        guardarProgreso();
+      }
+    });
   });
 
   actualizarBloqueos();
   actualizarProgreso();
 });
+
 
 function actualizarBloqueos() {
   const materias = document.querySelectorAll(".materia");
@@ -66,11 +78,14 @@ function actualizarBloqueos() {
 }
 
 function guardarProgreso() {
-  const ids = Array.from(
-    document.querySelectorAll(".materia.aprobada")
-  ).map(m => m.dataset.id);
+  const datos = Array.from(document.querySelectorAll(".materia")).map(m => ({
+    id: m.dataset.id,
+    aprobada: m.classList.contains("aprobada"),
+    final: m.classList.contains("final"),
+    nota: m.dataset.nota || ""
+  }));
 
-  localStorage.setItem("aprobadas", JSON.stringify(ids));
+  localStorage.setItem("materias", JSON.stringify(datos));
 }
 function actualizarProgreso() {
   const total = document.querySelectorAll(".materia").length;
