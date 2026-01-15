@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   actualizarProgreso();
 });
 
-
 function actualizarBloqueos() {
   const materias = document.querySelectorAll(".materia");
   const idsAprobadas = Array.from(
