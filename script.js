@@ -127,4 +127,20 @@ function actualizarProgreso() {
 
   document.getElementById("texto-finales").textContent =
     `${porcentajeFinales}%`;
+    const finalesConNota = Array.from(
+    document.querySelectorAll(".materia.final")
+  ).filter(m => m.dataset.nota);
+
+  if (finalesConNota.length === 0) {
+    document.getElementById("promedio").textContent = "—";
+  } else {
+    const suma = finalesConNota.reduce(
+      (acc, m) => acc + Number(m.dataset.nota),
+      0
+    );
+
+    const promedio = (suma / finalesConNota.length).toFixed(2);
+    document.getElementById("promedio").textContent = promedio;
+  }
+
 }
