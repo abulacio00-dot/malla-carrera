@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   actualizarBloqueos();
 });
+actualizarProgreso();
+
 
 function actualizarBloqueos() {
   const materias = document.querySelectorAll(".materia");
