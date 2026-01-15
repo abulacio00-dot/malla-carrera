@@ -9,13 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
       materia.classList.add("aprobada");
     }
 
-    materia.addEventListener("click", () => {
-      if (materia.classList.contains("bloqueada")) return;
+   materia.addEventListener("click", () => {
+  if (materia.classList.contains("bloqueada")) return;
 
-      materia.classList.toggle("aprobada");
-      guardarProgreso();
-      actualizarBloqueos();
-      actualizarProgreso();
+  materia.classList.toggle("aprobada");
+  guardarProgreso();
+  actualizarBloqueos();
+  actualizarProgreso();
+});
 
 
 function actualizarBloqueos() {
