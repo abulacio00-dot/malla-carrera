@@ -15,12 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       materia.classList.toggle("aprobada");
       guardarProgreso();
       actualizarBloqueos();
-    });
-  });
-
-  actualizarBloqueos();
-});
-actualizarProgreso();
+      actualizarProgreso();
 
 
 function actualizarBloqueos() {
